@@ -134,20 +134,21 @@ button:focus {
 }
 
 #historyList li {
+    display: inline-flex;
     direction: ltr;
-    flex-wrap: wrap;
     padding: 10px;
     border-bottom: 1px solid #7f8c8d;
-    display: flex;
+    overflow-wrap: break-word;
     font-family: Arial, Helvetica, sans-seriF;
     font-weight: bold;
     justify-content: space-between;
     align-items: center;
+    text-align: left;
     color: #ecf0f1;
 }
 
 #historyList li button {
-    margin-left: 10px;
+    margin-left: 50px;
     padding: 5px 10px;
     font-size: 12px;
     background-color: #ef7070;

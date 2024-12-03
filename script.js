@@ -1,36 +1,64 @@
 let history = JSON.parse(localStorage.getItem('history')) || [];
 const display = document.getElementById('display');
+const errors = ['Error', 'Infinity', 'NaN', 'undefined'];
+const operations = ['+', '-', '/', '*'];
+var resultFlag = false;
+
+document.querySelectorAll('Button').forEach(button => {
+    button.addEventListener('click', function() {
+        this.blur();
+    });
+});
+
 
 // Lai aprēķinātu rezultātu, kad nospiež Enter
 document.addEventListener("keydown", function(event) {
-    if (event.key === "Enter") {
+    var num = Number(event.key);
+
+    if (!Number.isNaN(num) ){
+        appendToDisplay(event.key);
+    }
+    else if (operations.includes(event.key)){
+        appendOperation(event.key);
+    }
+    else if (event.key === "Enter") {
         calculate();
+    } else if (event.key === "Backspace") {
+        if (resultFlag){
+            clearDisplay();
+            resultFlag = false;
+        } else {
+            display.value = display.value.slice(0, -1);
+        }
     }
 });
 
-// Pārbauda, vai ir kļūda (Error, Infinity vai NaN), un notīra ievadi, ja tāda ir
-display.addEventListener('click', function() {
-    if (display.value.includes('Error') || display.value.includes('Infinity') || display.value.includes('NaN')) {
-        clearDisplay();
-    }
-});
 
 // Pievieno vērtību ekrānam, ja nav kļūdu
 function appendToDisplay(value) {
-    if (display.value.includes('Error') || display.value.includes('Infinity') || display.value.includes('NaN')) {
+    if (errors.includes(display.value)) {
         clearDisplay();
     }
-    document.getElementById('display').value += value;
+    if (operations.includes(value)){
+        appendOperation(value)
+    } else{
+        display.value += value;
+    }
 }
 
 // Notīra ekrāna ievades lauku
 function clearDisplay() {
-    document.getElementById('display').value = '';
+    display.value = '';
 }
+
+function appendOperation(key){
+    display.value += ' ' + key + ' ';
+}
+
 
 // Aprēķina rezultātu, izmantojot eval funkciju un pievieno vēsturei
 function calculate() {
-    if (display.value.includes('Error') || display.value.includes('Infinity') || display.value.includes('NaN')){
+    if (errors.includes(display.value)){
         display.value = 'Error';
         return;
     }
@@ -38,6 +66,7 @@ function calculate() {
         const result = eval(display.value);
         addToHistory(display.value + ' = ' + result);
         display.value = result;
+        resultFlag = true;
     } catch (e) {
         display.value = 'Error';
     }
