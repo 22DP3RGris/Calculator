@@ -16,6 +16,18 @@ body {
     padding: 0;
 }
 
+.container {
+    justify-content: space-between;
+    width: 800px;
+    height: 600px;
+    display: flex;
+    flex-direction: row;
+    background-color: #3d4e5f;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
 h1{
     color: #fff;
     font-weight: bold;
@@ -34,7 +46,7 @@ h1{
 
 #display {
     width: 100%;
-    height: 60px;
+    height: 80px;
     margin-bottom: 20px;
     text-align: right;
     padding: 10px;
@@ -42,6 +54,20 @@ h1{
     border: 2px solid #99b3e9;
     border-radius: 5px;
     background-color: #a5dcea;
+    color: #2c3e50;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#expression {
+    font-size: 18px;
+    color: #555; /* Gaišāks tonis izteiksmei */
+}
+
+#result {
+    font-size: 24px;
+    font-weight: bold;
     color: #2c3e50;
 }
 
@@ -78,9 +104,18 @@ button:focus {
     outline: none;
 }
 
+#backspace {
+    background-color: #ef7070;
+    grid-column: 3/5;
+}
+
+#backspace:hover {
+    background-color: #c0392b;
+}
 
 #AC{
     background-color: #ef7070;
+    grid-column: 1/2;
 }
 
 #AC:hover{
@@ -88,11 +123,11 @@ button:focus {
 }
 
 #calculate-btn{
-    background-color: #aac087;
+    background-color: #cae69d;
 }
 
 #calculate-btn:hover{
-    background-color: #cae69d;
+    background-color: #b8cf94;
 }
 
 .operation-btn{
@@ -104,7 +139,9 @@ button:focus {
 }
 
 .history {
-    margin-top: 20px;
+    width: 350px;
+    height: 450px;
+    margin-left: 20px;
     color: #ecf0f1;
 }
 
@@ -127,28 +164,34 @@ button:focus {
     direction: rtl;
     list-style-type: none;
     padding: 0;
-    max-height: 136px;
+    height: 450px;
     overflow-y: auto;
     border-top: 1px solid #7f8c8d;
     margin-top: 10px;
 }
 
 #historyList li {
-    display: inline-flex;
+    width: 330px;
     direction: ltr;
+    flex-wrap: wrap;
     padding: 10px;
     border-bottom: 1px solid #7f8c8d;
-    overflow-wrap: break-word;
+    display: flex;
     font-family: Arial, Helvetica, sans-seriF;
     font-weight: bold;
     justify-content: space-between;
     align-items: center;
-    text-align: left;
     color: #ecf0f1;
 }
 
+#historyList li:hover {
+    background-color: #405c78;
+    cursor: pointer;
+}
+
 #historyList li button {
-    margin-left: 50px;
+    margin: 10px;
+    margin-left: 10px;
     padding: 5px 10px;
     font-size: 12px;
     background-color: #ef7070;

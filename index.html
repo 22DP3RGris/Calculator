@@ -11,30 +11,41 @@
 </head>
 <body>
     <h1>Calculator</h1>
-    <div class="calculator">
-        <input type="text" id="display" disabled placeholder="0000000000000000000000">
-        <div class="buttons">
-            <button onclick="clearDisplay()" id="AC">AC</button>
-            <button onclick="appendToDisplay('1')">1</button>
-            <button onclick="appendToDisplay('2')">2</button>
-            <button onclick="appendToDisplay('3')">3</button>
-            <button onclick="appendToDisplay('+')" class="operation-btn">+</button>
-            <button onclick="appendToDisplay('4')">4</button>
-            <button onclick="appendToDisplay('5')">5</button>
-            <button onclick="appendToDisplay('6')">6</button>
-            <button onclick="appendToDisplay('-')" class="operation-btn">-</button>
-            <button onclick="appendToDisplay('7')">7</button>
-            <button onclick="appendToDisplay('8')">8</button>
-            <button onclick="appendToDisplay('9')">9</button>
-            <button onclick="appendToDisplay('*')" class="operation-btn">*</button>
-            <button onclick="appendToDisplay('/')" class="operation-btn">/</button>
-            <button onclick="appendToDisplay('0')">0</button>
-            <button onclick="calculate()" id="calculate-btn">=</button>
+    <div class="container">
+        <div class="calculator">
+            <div id="display">
+                <div id="expression">0</div>
+                <div id="result"></div>
+              </div>
+            <div class="buttons">
+                <button onclick="appendToDisplay('(')"class="operation-btn">(</button>
+                <button onclick="appendToDisplay(')')"class="operation-btn">)</button>
+                <button onclick="appendToDisplay('%')" class="operation-btn">%</button>
+                <button onclick="appendOperation('/')" class="operation-btn">/</button>
+                <button onclick="appendToDisplay('7')">7</button>
+                <button onclick="appendToDisplay('8')">8</button>
+                <button onclick="appendToDisplay('9')">9</button>
+                <button onclick="appendOperation('*')" class="operation-btn">*</button>
+                <button onclick="appendToDisplay('4')">4</button>
+                <button onclick="appendToDisplay('5')">5</button>
+                <button onclick="appendToDisplay('6')">6</button>
+                <button onclick="appendOperation('-')" class="operation-btn">-</button>
+                <button onclick="appendToDisplay('1')">1</button>
+                <button onclick="appendToDisplay('2')">2</button>
+                <button onclick="appendToDisplay('3')">3</button>
+                <button onclick="appendOperation('+')" class="operation-btn">+</button>
+                <button onclick="toggleSign()" class="operation-btn">+/-</button>
+                <button onclick="appendToDisplay('0')">0</button>
+                <button onclick="appendToDisplay('.')" class="operation-btn">.</button>
+                <button onclick="calculate()" id="calculate-btn">=</button>
+                <button onclick="clearDisplay()" id="AC">AC</button>
+                <button onclick="clearLast()" id="backspace">⌫</button>
+            </div>
         </div>
         <div class="history">
-            <h2>Vēsture</h2>
+            <h2>History</h2>
             <ul id="historyList"></ul>
-            <button onclick="clearHistory()" id="history-btn">Dzēst Vēsturi</button>
+            <button onclick="clearHistory()" id="history-btn">Delete History</button>
         </div>
     </div>
     <script src="script.js"></script>
